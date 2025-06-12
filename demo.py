@@ -1,19 +1,20 @@
 import os
 from web3 import Web3
 import json
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 from alith import Agent, WindowBufferMemory, MilvusStore, chunk_text
 from pathlib import Path
 
 # Load environment variables
-load_dotenv()
+loaded = load_dotenv(find_dotenv(), override=True)
+print("DEBUG: .env loaded =", loaded)
 
 # Metis Sepolia Configuration
 METIS_SEPOLIA_CONFIG = {
-    'chain_id': 59902,
-    'rpc_url': 'https://sepolia.metisdevops.link',
+    'chain_id': 133717,
+    'rpc_url': 'https://hyperion-testnet.metisdevops.link',
     'explorer_url': 'https://sepolia-explorer.metisdevops.link',
-    'name': 'Metis Sepolia'
+    'name': 'Metis Hyerion Testnet',
 }
 
 # Initialize Web3
@@ -126,7 +127,7 @@ def create_knowledge_base():
     To convert raw balance to human-readable format:
     Human Balance = Raw Balance / (10 ^ decimals)
     
-    Example: If raw balance is 1000000000000000000 and decimals is 18,
+    Example: If raw balance is 500000000 and decimals is 18,
     then human balance is 1.0 tokens.
     
     ## Common Token Decimal Values:
@@ -183,21 +184,19 @@ rag_store = setup_rag()
 agent = Agent(
     name="Metis Token Balance Agent with RAG",
     model="gpt-4",
-    preamble="""You are an AI assistant for Metis L2 that can check ERC20 token balances.
-    You can help users retrieve token information from the Metis Sepolia network.
-    You have memory of our conversation and access to a knowledge base about Metis L2,
-    ERC20 tokens, and blockchain concepts.
-    
-    Use your knowledge base to provide detailed explanations about:
-    - Metis L2 blockchain and its features
-    - ERC20 token standards and functions
-    - Token decimals and balance formatting
-    - Troubleshooting common issues
-    - Best practices for blockchain interactions
-    when ask to check balances just return balance information.
-    when ask about information about tokens, provide relevant details from the knowledge base.
-    When users ask about previous balance checks or want to compare tokens,
-    you can reference our conversation history to provide better insights.""",
+    preamble="""You are an AI assistant for Metis L2 that can check ERC20 token balances and answer technical questions using a knowledge base.
+        You are connected to a vector search system (RAG) that contains important documentation about:
+        - Metis L2 blockchain and its features
+        - ERC20 token standards and functions
+        - Token decimals and formatting rules
+        - Blockchain address validation and troubleshooting
+
+        When answering technical or factual questions, **you must rely only on the knowledge base content** unless otherwise specified. Do not make assumptions or use outside knowledge if the RAG context is available.
+
+        Behavior:
+        - When asked informational questions (e.g., about Metis, ERC20, decimals), retrieve and quote or summarize relevant chunks from the knowledge base.
+        - If the user’s request cannot be answered from the knowledge base, say so clearly.
+        - You have access to memory and conversation history to assist with follow-ups and context-aware responses.""",
     memory=WindowBufferMemory(),
     store=rag_store if rag_store else None
 )
