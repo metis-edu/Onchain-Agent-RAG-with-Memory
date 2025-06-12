@@ -54,7 +54,7 @@ API_KEY=your_openai_api_key  # Required by Alith
 ## Run the Agent
 
 ```bash
-python rag.py
+python demo.py
 ```
 
 ### Commands Available:
