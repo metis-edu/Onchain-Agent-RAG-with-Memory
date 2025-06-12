@@ -22,7 +22,7 @@ Create a powerful AI agent capable of interacting with smart contracts on the Me
 
 ```bash
 # Clone this repo and navigate into it
-git clone https://github.com/your-org/your-repo.git
+git clone https://github.com/metis-edu/Onchain-Agent-RAG-with-Memory.git
 cd your-repo
 
 # Create virtual environment
