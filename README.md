@@ -31,12 +31,14 @@ source venv/bin/activate  # Windows: venv\Scripts\activate
 
 # Install required packages
 pip install alith web3 python-dotenv
+pip install torch
 ```
 
 If using vector storage:
 
 ```bash
-pip install pymilvus
+pip install pymilvus[model] 
+# or pip install "pymilvus[model]" for zsh.
 ```
 
 ---
@@ -109,10 +111,6 @@ Wallet: https://sepolia-explorer.metisdevops.link/address/0x412d...
 - **"Failed to load api\_key from parameter or .env"**:
 
   - Ensure `.env` exists and contains `API_KEY`
-
-- **"Failed to read config file" (MCP error)**:
-
-  - Alith may require a `mcp_config.json` file (check Alith documentation or pass `mcp_config_path` explicitly)
 
 ### RAG Disabled
 
