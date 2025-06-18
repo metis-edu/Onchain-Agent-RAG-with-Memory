@@ -1,6 +1,6 @@
 # Onchain AI Agent with RAG and Memory
 
-Create a powerful AI agent capable of interacting with smart contracts on the Metis Sepolia testnet using Alith's framework. This agent supports:
+Create a powerful AI agent capable of interacting with smart contracts on the Metis Hyperion testnet using Alith's framework. This agent supports:
 
 - ERC20 balance checking
 - Token insights
@@ -11,7 +11,7 @@ Create a powerful AI agent capable of interacting with smart contracts on the Me
 
 ## Features
 
-- **ERC20 Token Balance Checker**: Fetch balance and metadata from any ERC20 token on Metis Sepolia.
+- **ERC20 Token Balance Checker**: Fetch balance and metadata from any ERC20 token on Metis Hyperion.
 - **Memory-Enabled Conversations**: Remembers past user interactions for context.
 - **Knowledge Base (RAG)**: Leverages local knowledge about Metis, ERC20 tokens, best practices, etc.
 - **Onchain Agent using **[**Alith**](https://github.com/0xLazAI/alith): Connects OpenAI-like models with blockchain agents.
@@ -68,7 +68,7 @@ exit                                        # Exit the agent
 
 The agent will:
 
-- Connect to the Metis Sepolia RPC
+- Connect to the Metis Hyperion RPC
 - Validate addresses
 - Read token name, symbol, decimals, total supply
 - Format raw balance into human-readable format
@@ -88,8 +88,8 @@ Balance: 250.00 EXT
 Raw Balance: 250000000000000000000
 
 View on Explorer:
-Token: https://sepolia-explorer.metisdevops.link/token/0xDead...
-Wallet: https://sepolia-explorer.metisdevops.link/address/0x412d...
+Token: https://hyperion-testnet-explorer.metisdevops.link/token/0xDead...
+Wallet: https://hyperion-testnet-explorer.metisdevops.link/address/0x412d...
 ```
 
 ---
@@ -137,7 +137,7 @@ Refer to `tg-bot.py` in the repository to:
 
 ## Resources
 
-- [Metis Sepolia Explorer](https://sepolia-explorer.metisdevops.link)
+- [Metis Hyperion Explorer](https://hyperion-testnet-explorer.metisdevops.link/)
 - [OpenAI API](https://platform.openai.com)
 - [Alith Framework](https://github.com/0xLazAI/alith)
 - [Python Telegram Bot Documentation](https://python-telegram-bot.readthedocs.io/)
@@ -146,7 +146,7 @@ Refer to `tg-bot.py` in the repository to:
 
 ## Acknowledgements
 
-Developed using the Alith framework by LazAI and Web3.py on Metis Sepolia.
+Developed using the Alith framework by LazAI and Web3.py on Metis Hyperion.
 
 ---
 
