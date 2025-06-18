@@ -9,16 +9,16 @@ from pathlib import Path
 loaded = load_dotenv(find_dotenv(), override=True)
 print("DEBUG: .env loaded =", loaded)
 
-# Metis Sepolia Configuration
-METIS_SEPOLIA_CONFIG = {
+# Metis Hyperion Configuration
+METIS_HYPERION_CONFIG = {
     'chain_id': 133717,
     'rpc_url': 'https://hyperion-testnet.metisdevops.link',
-    'explorer_url': 'https://sepolia-explorer.metisdevops.link',
+    'explorer_url': 'https://hyperion-testnet-explorer.metisdevops.link/',
     'name': 'Metis Hyerion Testnet',
 }
 
 # Initialize Web3
-w3 = Web3(Web3.HTTPProvider(METIS_SEPOLIA_CONFIG['rpc_url']))
+w3 = Web3(Web3.HTTPProvider(METIS_HYPERION_CONFIG['rpc_url']))
 
 # ERC20 ABI (minimal for balance checks)
 ERC20_ABI = '''[
@@ -106,10 +106,10 @@ def create_knowledge_base():
     Metis is a Layer 2 scaling solution for Ethereum that provides fast and low-cost transactions.
     It uses Optimistic Rollup technology to achieve scalability while maintaining security.
     
-    ## Metis Sepolia Testnet
-    - Chain ID: 59902
-    - RPC URL: https://sepolia.metisdevops.link
-    - Explorer: https://sepolia-explorer.metisdevops.link
+    ## Metis Hyperion Testnet
+    - Chain ID: 133717
+    - RPC URL: https://hyperion-testnet.metisdevops.link
+    - Explorer: https://hyperion-testnet-explorer.metisdevops.link
     - Purpose: Testing environment for developers
     
     ## ERC20 Tokens
@@ -245,15 +245,15 @@ def check_balance(contract_address: str, wallet_address: str) -> str:
             f"Balance: {formatted_balance:,.{decimals}f} {symbol}\n"
             f"Raw Balance: {balance}\n\n"
             f"🔍 View on Explorer:\n"
-            f"Token: {METIS_SEPOLIA_CONFIG['explorer_url']}/token/{contract_address}\n"
-            f"Wallet: {METIS_SEPOLIA_CONFIG['explorer_url']}/address/{wallet_address}"
+            f"Token: {METIS_HYPERION_CONFIG['explorer_url']}/token/{contract_address}\n"
+            f"Wallet: {METIS_HYPERION_CONFIG['explorer_url']}/address/{wallet_address}"
         )
     
     except Exception as e:
         return f"❌ Error checking balance: {str(e)}"
 
 def main():
-    print(f"🤖 Metis Token Balance Agent with RAG running on {METIS_SEPOLIA_CONFIG['name']}...")
+    print(f"🤖 Metis Token Balance Agent with RAG running on {METIS_HYPERION_CONFIG['name']}...")
     print("This agent can check ERC20 token balances, remembers our conversation,")
     print("and has access to knowledge about Metis L2 and ERC20 tokens!")
     print("Type 'exit' to quit.")
